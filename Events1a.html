@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mouse Events</title>
+	<script type="text/Javascript" src="angular.min.js"></script>
+	<script type="text/Javascript" src="Script1.js"></script>
+	<script src="https://rawgit.com/jossef/angular-timer/master/dist/angular-timer.js"></script>
+</head>
+<body ng-app="MyApp">
+<div ng-controller="MainController">
+
+<input type="button" name="start" value="START">
+<br>
+<br>
+
+<timer interval={{timer}}> {{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer>
+<br>
+<br>
+<timer end-time={{timer}}>{{hours}} hours, {{minutes}} minutes, {{seconds}} seconds.</timer>
+<br>
+<br>
+</div>
+<!-- <div ng-controller='TimeCtrl'>
+    <p>{{ clock  | date:'medium'}}</p>
+</div> -->
+<div ng-controller='Timectrl as timectrl'>
+<input type="button" name="reset" value="START" ng-click="start()">
+    <p>{{ timectrl.clock.time | date:'HH:mm:ss'}}</p>
+
+<input type="button" name="reset" value="RESET" ng-click="reset()">
+</div>
+</body>
+</html>

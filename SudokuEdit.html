@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sudoku Editable</title>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="SudokuEdit.js"></script>
+
+	<style type="text/css">
+		.cell-editor
+{
+background: white;
+overflow: hidden;
+}
+.cell-editor:before
+{
+content: "";
+display: inline-block;
+vertical-align: middle;
+height: 100%;
+}
+input
+{
+display: inline-block;
+vertical-align: middle;
+width: 200px;
+}
+button
+{
+background: #2455b0;
+border: thin solid #1e4691;
+color: white;
+padding: 2px 5px;
+display: inline-block;
+vertical-align: middle;
+}
+	</style>
+
+	<style type="text/css">
+		
+		table {
+  margin:1em auto;
+}
+td {
+  height:30px;
+  width:30px;
+  border:1px solid;
+  text-align:center;
+}
+td:first-child {
+	</style>
+</head>
+<body ng-app="MyApp">
+
+<div ng-controller="MainController">
+
+<span>{{FirstName}}</span>
+<span>{{LastName}}</span>
+<table>
+<tr>
+<td> Name: </td> 
+<td></td>
+
+<td class='line-qty'><editable></editable></td>
+</tr>
+<tr><td colspan="3">{{Linetext2}}</td></tr>
+<tr>
+<td class='line10'><edit10></edit10></td>
+<td class='line11'><b><edit11></edit11></b></td>
+<td class='line12'><edit12></edit12></td>
+</tr>
+<tr>
+</tr>
+</table>
+<br>
+	<input type="button" name="Edit" value="EDIT" ng-click="CellEdit();CellEditRow1();">
+	<input type="button" name="Save" value="SAVE" ng-click="CellSave(edit-cell);CellSaveRow1();">
+</div>
+
+<!-- The below controller is demonstrated for 3*3 matrix, it can be enhanced for a 9*9 matrix -->
+<br><br><br><br><br>
+<div ng-controller="ControllerTwo">
+
+<!-- <span><editcell class="d1"></editcell></span> -->
+<span><edit-cell divVal="value1" spanVal="value.no1"></edit-cell></span>
+<input type="button" name="edit" ng-click="EditCells()" value="EDIT" />
+<table>
+
+<tr ng-repeat="row in ques track by $index">
+<td ng-repeat="n in row track by $index" ng-init="NValueCheck(n);"><div ng-if="n!=0">{{n}}</div><!-- <div ng-if="n.value==0"><editcell divVal="n.divVal" spanVal="n.spanVal"></editcell></div> -->
+</td>
+</tr>
+<tr>
+<td><editcell divVal="value1" spanVal="value.no1"></editcell></td>
+</tr>
+<input type="button" name="start" ng-click="ConvertQuesArray()" value="START" />
+<input type="button" name="start" ng-click="SaveCells()" value="SAVE" />
+</div> 
+
+</body>
+</html>
